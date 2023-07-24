@@ -1,6 +1,5 @@
 package br.com.projectgptapi.gptapi.services;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,15 +14,14 @@ import br.com.projectgptapi.gptapi.domain.GptResponse;
 
 @Service
 public class GptService {
-    @Value("${chatgpt.api.key}")
-    private String apiKey;
+    private String apiKey = "";
     private final String BASE_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
 
     public String getChatGptResponse(String question) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Autorization", "Bearer " + apiKey);
+        headers.set("Autorization", "Bearer" + apiKey);
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
