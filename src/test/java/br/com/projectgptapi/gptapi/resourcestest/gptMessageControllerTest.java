@@ -8,12 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import br.com.projectgptapi.gptapi.resources.GptMessageController;
 
 @SpringBootTest
-public class gptMessageControllerTest {
+public class GptMessageControllerTest {
     private GptMessageController controller = new GptMessageController();
 
     @Test
     public void controllerTest() {
-
         assertEquals("OLÁ IMBECIL".toLowerCase(), controller.returnTestString().toLowerCase());
     }
 
