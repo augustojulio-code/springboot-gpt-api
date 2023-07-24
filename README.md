@@ -1,2 +1,2 @@
 ## Project Springboot 
-consuming chatGPT api for generate ABNT references
+Consuming chatGPT api for generate ABNT references
