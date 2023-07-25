@@ -13,17 +13,18 @@ import br.com.projectgptapi.gptapi.services.GptService;
 import br.com.projectgptapi.gptapi.services.Testets;
 
 @RestController
-@RequestMapping()
+// @RequestMapping()
 @CrossOrigin(origins = "https://api.openai.com/v1/engines/davinci-codex/completions")
 public class GptMessageController {
 
-    @Autowired
+    // @Autowired
     private GptService service;
 
-    @Autowired
+    // @Autowired
     private Testets testets;
 
-    @PostMapping(value = "/chat", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    // @PostMapping(value = "/chat", consumes = MediaType.APPLICATION_JSON_VALUE,
+    // produces = MediaType.APPLICATION_JSON_VALUE)
     public String chatWithGpt(@RequestBody String question) {
         try {
             return service.getChatGptResponse("Que dia é comemorado a independencia do Brasil?");

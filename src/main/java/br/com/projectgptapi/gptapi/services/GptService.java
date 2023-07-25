@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import br.com.projectgptapi.gptapi.domain.GptRequest;
 import br.com.projectgptapi.gptapi.domain.GptResponse;
 
-@Service
+//@Service
 public class GptService {
     private String apiKey = "";
     private final String BASE_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
