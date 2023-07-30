@@ -14,32 +14,38 @@ import br.com.projectgptapi.gptapi.domain.GptResponse;
 
 //@Service
 public class GptService {
-    private String apiKey = "";
+    private String API_KEY = "";
     private final String BASE_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
 
     public String getChatGptResponse(String question) {
-        RestTemplate restTemplate = new RestTemplate();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Autorization", "Bearer" + apiKey);
+        try {
+            RestTemplate restTemplate = new RestTemplate();
 
-        headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Autorization", "Bearer" + API_KEY);
 
-        GptRequest gptRequest = new GptRequest(question, 1);
+            headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<GptRequest> requestEntity = new HttpEntity<GptRequest>(gptRequest, headers);
+            GptRequest gptRequest = new GptRequest(question, 1);
 
-        ResponseEntity<GptResponse> responseEntity = restTemplate.exchange(
-                BASE_URL,
-                HttpMethod.POST,
-                requestEntity,
-                GptResponse.class);
+            HttpEntity<GptRequest> requestEntity = new HttpEntity<GptRequest>(gptRequest, headers);
 
-        if (responseEntity.getStatusCode() == HttpStatus.OK) {
-            GptResponse gptResponse = responseEntity.getBody();
-            return gptResponse.getChoices().get(0).getText();
-        } else {
-            return "Erro ao obter a resposta do Chat GPT";
+            ResponseEntity<GptResponse> responseEntity = restTemplate.exchange(
+                    BASE_URL,
+                    HttpMethod.POST,
+                    requestEntity,
+                    GptResponse.class);
+
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                GptResponse gptResponse = responseEntity.getBody();
+                return gptResponse.getChoices().get(0).getText();
+            } else {
+                return "Erro ao obter a resposta do Chat GPT";
+            }
+        } catch (Exception e) {
+            return "" + e;
         }
+
     }
 }
