@@ -1,11 +1,6 @@
 package br.com.projectgptapi.gptapi.resourcestest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import br.com.projectgptapi.gptapi.controllers.GptMessageController;
 
 @SpringBootTest
 public class GptMessageControllerTest {
